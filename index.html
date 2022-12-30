@@ -13,6 +13,12 @@
         crossorigin="anonymous"></script>
 
     <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <script src="prac.js"></script>
+    <script src="mise.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
@@ -24,6 +30,7 @@
             background-color: black;
             color: white;
 
+           
             height: 250px;
 
             display: flex;
@@ -64,14 +71,16 @@
             width: 1200px;
             margin: 20px auto 20px auto;
         }
+
         .mypost {
-                        
+
             width: 500px;
             margin: 20px auto 20px auto;
             padding: 20px 20px 20px 20px;
-            
+
             box-shadow: 0px 0px 3px 0px gray;
         }
+
         .mtbtn {
             display: flex;
             flex-direction: row;
@@ -79,17 +88,29 @@
             justify-content: center;
             margin-top: 20px;
         }
-        .mybtn > button {
+
+        .mybtn>button {
             margin: 10px 10px 0px 10px;
         }
     </style>
+        <script>
+            $(document).ready(function() {
+                fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
+                        // console.log(data)
+                        let temp = data['temp']
+                        $('#temp').text(temp)
+                    })
+            })
+        </script>
+    
 </head>
 
 <body>
     <div class="mytitle">
-        <h1>My opinion about some video games</h1>
-        <button>Input</button>
-        <buttom>Personal taste ver.1 </buttom>
+        <h1>기억에 남는 게임들</h1>
+        <div>현재 서울의 날씨 : <span id="temp">20</span>도</div>
+        <button>입력하기</button>
+        <buttom>개인적 취향 ver.1 </buttom>
     </div>
     <div class="mypost">
         <div class="form-floating mb-3">
@@ -108,7 +129,8 @@
             </select>
         </div>
         <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                
             <label for="floatingTextarea">Comments</label>
         </div>
         <div class="mybtn">
